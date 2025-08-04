@@ -1,0 +1,118 @@
+class_name gCharacter
+
+###############
+## CONSTANTS ##
+###############
+const PLAYER_HP_CAP = 9999;
+const PLAYER_SP_CAP = 999;
+const UNIT_RAW_STAT_CAP = 99;
+const UNIT_ATTACK_CAP = 999;
+const BASE_WEAK_MOD = 150;
+const BASE_RESIST_MOD = 25;
+
+const DEFAULT_WEAK_MOD: PackedInt32Array = [
+	BASE_WEAK_MOD, # TYPLESS
+	BASE_WEAK_MOD, # PHYS
+	BASE_WEAK_MOD, # GUN
+	BASE_WEAK_MOD, # FIRE
+	BASE_WEAK_MOD, # ICE
+	BASE_WEAK_MOD, # HOLY
+	BASE_WEAK_MOD, # SHADOW
+	BASE_WEAK_MOD, # ALPHA
+	BASE_WEAK_MOD, # OMEGA
+	BASE_WEAK_MOD, # BODY
+	BASE_WEAK_MOD, # NERVE
+	BASE_WEAK_MOD, # MIND
+	BASE_WEAK_MOD, # POTENTIAL
+	BASE_WEAK_MOD, # DEATH
+	BASE_WEAK_MOD, # STUN
+	BASE_WEAK_MOD, # DISABLE
+	BASE_WEAK_MOD, # AFRAID
+	BASE_WEAK_MOD, # RECOVERY
+]
+
+const DEFAULT_RESIST_MOD: PackedInt32Array = [
+	BASE_RESIST_MOD, # TYPLESS
+	BASE_RESIST_MOD, # PHYS
+	BASE_RESIST_MOD, # GUN
+	BASE_RESIST_MOD, # FIRE
+	BASE_RESIST_MOD, # ICE
+	BASE_RESIST_MOD, # HOLY
+	BASE_RESIST_MOD, # SHADOW
+	BASE_RESIST_MOD, # ALPHA
+	BASE_RESIST_MOD, # OMEGA
+	BASE_RESIST_MOD, # BODY
+	BASE_RESIST_MOD, # NERVE
+	BASE_RESIST_MOD, # MIND
+	BASE_RESIST_MOD, # POTENTIAL
+	BASE_RESIST_MOD, # DEATH
+	BASE_RESIST_MOD, # STUN
+	BASE_RESIST_MOD, # DISABLE
+	BASE_RESIST_MOD, # AFRAID
+	BASE_RESIST_MOD, # RECOVERY
+]
+
+const DEFAULT_ATTACK_ARMOR: PackedInt32Array = [
+	100, # MELEE ATTACK
+	100, # GUN ATTACK
+	100, # PSYONIC ATTACK
+]
+
+const DEFAULT_ELEMENT_ARMOR: PackedInt32Array = [
+	100, # TYPLESS
+	100, # PHYS
+	100, # GUN
+	100, # FIRE
+	100, # ICE
+	100, # HOLY
+	100, # SHADOW
+	100, # ALPHA
+	100, # OMEGA
+	100, # BODY
+	100, # NERVE
+	100, # MIND
+	100, # POTENTIAL
+	100, # DEATH
+	100, # STUN
+	100, # DISABLE
+	100, # AFRAID
+	100, # RECOVERY
+]
+
+#################
+## ENUMERATORS ##
+#################
+# RAW STATS #
+enum Raw {
+	STR = 0,
+	PSY = 1,
+	SKL = 2,
+	SPD = 3,
+	LCK = 4,
+}
+
+enum AttackStat {
+	MELEE_WEAPON = 0,  # Weapon-based melee attack
+	MELEE_UNARMED = 1, # Melee attack without a weapon
+	GUN_WEAPON = 2,	   # Weapon-based gun attack
+	GUN_UNARMED = 3,   # Gun attack without a weapon
+	PSYONIC_TECH = 4,  # Psyonic as learned tech, or via Psyonic shard bag item
+	PSYONIC_SHARD = 5, # Psyonic equipped on ring
+}
+
+enum Sex {
+	NONE = 0,
+	MALE = 1,
+	FEMALE = 2,
+	OTHER = 3,
+	UNKNOWN = 4,
+}
+
+enum Innate {
+	FIRE = 3,
+	ICE = 4,
+	HOLY = 5,
+	SHADOW = 6,
+	ALPHA = 7,
+	OMEGA = 8,
+}

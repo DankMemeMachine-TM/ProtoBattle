@@ -1,6 +1,9 @@
 class_name unitCharacter
 extends Node2D
 
+const MAX_STAT_CHANGE = 4;
+const MIN_STAT_CHANGE = -4;
+
 var base_name: String = "";
 var base_desc: String = "";
 var base_sex := gCharacter.Sex.NONE;
@@ -13,11 +16,11 @@ var base_attack: PackedInt32Array = [0,0,0,0,0,0];
 var base_hit_rate: PackedByteArray = [0,0,0,0,0,0];
 var base_crit_rate: PackedByteArray = [0,0,0,0,0,0];
 var base_evasion: int = 0;
-var base_element_property: PackedByteArray; #TODO
-var base_weak_mod: PackedInt32Array; #TODO
-var base_resist_mod: PackedInt32Array; #TODO
-var base_element_armor: PackedInt32Array; #TODO
-var base_attack_armor: PackedInt32Array; #TODO
+var base_element_property: PackedByteArray = gInnate.ELMPROP_DEFAULT;
+var base_weak_mod: PackedInt32Array = gCharacter.DEFAULT_WEAK_MOD;
+var base_resist_mod: PackedInt32Array = gCharacter.DEFAULT_RESIST_MOD;
+var base_element_armor: PackedInt32Array = gCharacter.DEFAULT_ELEMENT_ARMOR;
+var base_attack_armor: PackedInt32Array = gCharacter.DEFAULT_ATTACK_ARMOR;
 
 var total_max_hp: int = 0;
 var total_max_sp: int = 0;
@@ -26,15 +29,15 @@ var total_attack: PackedInt32Array = [0,0,0,0,0,0];
 var total_hit_rate: PackedByteArray = [0,0,0,0,0,0];
 var total_crit_rate: PackedByteArray = [0,0,0,0,0,0];
 var total_evasion: int = 0;
-var total_element_property: PackedByteArray; #TODO
-var total_weak_mod: PackedInt32Array; #TODO
-var total_resist_mod: PackedInt32Array; #TODO
-var total_element_armor: PackedInt32Array; #TODO
-var total_attack_armor: PackedInt32Array; #TODO
+var total_element_property: PackedByteArray = gInnate.ELMPROP_DEFAULT;
+var total_weak_mod: PackedInt32Array = gCharacter.DEFAULT_WEAK_MOD;
+var total_resist_mod: PackedInt32Array = gCharacter.DEFAULT_RESIST_MOD;
+var total_element_armor: PackedInt32Array = gCharacter.DEFAULT_ELEMENT_ARMOR;
+var total_attack_armor: PackedInt32Array = gCharacter.DEFAULT_ATTACK_ARMOR;
 
 var current_hp: int = 0;
 var current_sp: int = 0;
-var current_ailemnts: Array = []; #TODO
+var _current_ailments: Array = []; #TODO
 var current_effects: Array = []; #TODO
 var stat_changes := Vector3i(0,0,0);
 
@@ -73,6 +76,7 @@ func recalculate_stats() -> void:
 	self.total_hit_rate = calculate_hit_rate();
 	self.total_crit_rate = calculate_crit_rate();
 	self.total_evasion = calculate_evasion();
+	self.total_attack_armor[2] = 999;
 	
 func calculate_max_hp() -> int:
 	var value: int = self.base_max_hp;
@@ -96,3 +100,45 @@ func calculate_crit_rate() -> PackedByteArray:
 	
 func calculate_evasion() -> int:
 	return self.base_evasion;
+	
+######################
+## BATTLE FUNCTIONS ##
+######################
+# AILMENTS #
+func check_for_ailment(input: Object) -> bool:
+	if(self._current_ailments.has(input)):
+		return true;
+	return false;
+	
+func add_ailment(input: Object) -> void:
+	if(!self.check_for_ailment(input)):
+		self._current_ailments.append(input);
+		
+func remove_ailment(input: Object) -> void:
+	if(!self.check_for_ailment(input)):
+		self._current_ailments.erase(input);
+		
+func decrement_ailment_turn_counters() -> void:
+	var _counter = 0;
+	while _counter < self._current_ailments.size():
+		var temp = _current_ailments[_counter];
+		temp.decrement_counter();
+		if (temp.get_turn_counter() <= 0):
+			#temp.turn_count_expired_effects(); #TODO: make sure this wouldn't just be a signal or something
+			self.remove_ailment(temp);
+		else:
+			_counter += 1;
+		
+func clear_ailments() -> void:
+	self._current_ailments.clear();
+	
+# STAT CHANGES #
+func change_stat(input := Vector3i(0,0,0)):
+	self.stat_changes.x = clamp(self.stat_changes.x + input.x, MIN_STAT_CHANGE, MAX_STAT_CHANGE);
+	self.stat_changes.y = clamp(self.stat_changes.y + input.y, MIN_STAT_CHANGE, MAX_STAT_CHANGE);
+	self.stat_changes.z = clamp(self.stat_changes.z + input.z, MIN_STAT_CHANGE, MAX_STAT_CHANGE);
+
+func clear_stat_changes() -> void:
+	self.stat_changes.x = 0;
+	self.stat_changes.y = 0;
+	self.stat_changes.z = 0;

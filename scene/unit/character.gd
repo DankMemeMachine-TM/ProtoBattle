@@ -16,11 +16,11 @@ var base_attack: PackedInt32Array = [0,0,0,0,0,0];
 var base_hit_rate: PackedByteArray = [0,0,0,0,0,0];
 var base_crit_rate: PackedByteArray = [0,0,0,0,0,0];
 var base_evasion: int = 0;
-var base_element_property: PackedByteArray = gInnate.INNATE_NONE;
-var base_weak_mod: PackedInt32Array = gCharacter.DEFAULT_WEAK_MOD;
-var base_resist_mod: PackedInt32Array = gCharacter.DEFAULT_RESIST_MOD;
-var base_element_armor: PackedInt32Array = gCharacter.DEFAULT_ELEMENT_ARMOR;
-var base_attack_armor: PackedInt32Array = gCharacter.DEFAULT_ATTACK_ARMOR;
+var base_element_property: PackedByteArray = gInnate.INNATE_NONE.duplicate();
+var base_weak_mod: PackedInt32Array = gCharacter.DEFAULT_WEAK_MOD.duplicate();
+var base_resist_mod: PackedInt32Array = gCharacter.DEFAULT_RESIST_MOD.duplicate();
+var base_element_armor: PackedInt32Array = gCharacter.DEFAULT_ELEMENT_ARMOR.duplicate();
+var base_attack_armor: PackedInt32Array = gCharacter.DEFAULT_ATTACK_ARMOR.duplicate();
 
 var total_max_hp: int = 0;
 var total_max_sp: int = 0;
@@ -39,8 +39,9 @@ var current_level: int = 0;
 var current_hp: int = 0;
 var current_sp: int = 0;
 var current_attack_power: PackedInt32Array = [0,0,0,0,0,0]; # Stored here so it does not need to be re-calculated every time
-var _current_ailments: Array = []; #TODO
-var _current_effects: Array = []; #TODO
+var current_row := gCharacter.Row.FRONT;
+var _current_ailments: Array[RefCounted] = []; #TODO
+var _current_effects: Array[RefCounted] = []; #TODO
 var _stat_changes := Vector3i(0,0,0);
 
 func _ready() -> void:

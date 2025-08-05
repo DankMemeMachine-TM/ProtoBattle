@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkhev0yxtclta"]
+[gd_scene load_steps=3 format=3 uid="uid://bkhev0yxtclta"]
 
 [ext_resource type="Script" uid="uid://dv3mepjmw5mu4" path="res://scene/battle/battle.gd" id="1_1apf1"]
+[ext_resource type="PackedScene" uid="uid://bnj4dtaomd87b" path="res://scene/battle/BattleGUI.tscn" id="2_jbk8y"]
 
 [node name="Battle" type="Node"]
 script = ExtResource("1_1apf1")
+
+[node name="BattleGUI" parent="." instance=ExtResource("2_jbk8y")]

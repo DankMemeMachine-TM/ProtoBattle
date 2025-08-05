@@ -118,3 +118,8 @@ enum Innate {
 	ALPHA = 7,
 	OMEGA = 8,
 }
+
+enum Row {
+	FRONT,
+	BACK,
+}

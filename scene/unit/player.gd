@@ -6,6 +6,7 @@ This file contains functions for player characters, such as override functions t
 gets factored into their stats.
 '''
 #TODO: change stat functions to be based off equipment
+class_name unitPlayer
 extends unitCharacter
 
 var _player_current_equipment: Array[RefCounted] = [null, null, null, null];

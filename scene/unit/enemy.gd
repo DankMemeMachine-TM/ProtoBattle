@@ -1,1 +1,2 @@
+class_name unitEnemy
 extends unitCharacter

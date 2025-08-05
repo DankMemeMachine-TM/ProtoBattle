@@ -3,12 +3,23 @@ class_name gCharacter
 ###############
 ## CONSTANTS ##
 ###############
-const PLAYER_HP_CAP = 9999;
-const PLAYER_SP_CAP = 999;
-const UNIT_RAW_STAT_CAP = 99;
-const UNIT_ATTACK_CAP = 999;
+const UNIT_MIN_HP = 1;
+const PLAYER_MAX_HP = 9999;
+const ENEMY_MAX_HP = 99999;
+const UNIT_MIN_SP = 0;
+const PLAYER_MAX_SP = 999;
+const ENEMY_MAX_SP = 99999;
+const UNIT_MIN_RAW_STAT = 1;
+const UNIT_MAX_RAW_STAT = 99;
+const UNIT_MIN_ATTACK = 1;
+const UNIT_MAX_ATTACK = 999;
+const UNIT_MIN_EVASION = -99;
+const UNIT_MAX_EVASION = 99;
 const BASE_WEAK_MOD = 150;
 const BASE_RESIST_MOD = 25;
+const MAX_LEVEL = 100;
+
+const DEFAULT_ELEMENT_PROPERTY: PackedByteArray = gInnate.INNATE_NONE;
 
 const DEFAULT_WEAK_MOD: PackedInt32Array = [
 	BASE_WEAK_MOD, # TYPLESS
@@ -89,15 +100,6 @@ enum Raw {
 	SKL = 2,
 	SPD = 3,
 	LCK = 4,
-}
-
-enum AttackStat {
-	MELEE_WEAPON = 0,  # Weapon-based melee attack
-	MELEE_UNARMED = 1, # Melee attack without a weapon
-	GUN_WEAPON = 2,	   # Weapon-based gun attack
-	GUN_UNARMED = 3,   # Gun attack without a weapon
-	PSYONIC_TECH = 4,  # Psyonic as learned tech, or via Psyonic shard bag item
-	PSYONIC_SHARD = 5, # Psyonic equipped on ring
 }
 
 enum Sex {

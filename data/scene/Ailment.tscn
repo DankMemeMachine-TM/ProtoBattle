@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgds20cwyyixr"]
+
+[ext_resource type="Script" uid="uid://bnj5413tawln2" path="res://data/scene/ailment.gd" id="1_hpl73"]
+
+[node name="Ailment" type="Node"]
+script = ExtResource("1_hpl73")

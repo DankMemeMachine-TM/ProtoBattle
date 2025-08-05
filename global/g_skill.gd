@@ -16,6 +16,15 @@ enum AttackType {
 	PSYONIC,
 }
 
+enum AttackStat {
+	MELEE_WEAPON = 0,  # Weapon-based melee attack
+	MELEE_UNARMED = 1, # Melee attack without a weapon
+	GUN_WEAPON = 2,	   # Weapon-based gun attack
+	GUN_UNARMED = 3,   # Gun attack without a weapon
+	PSYONIC_TECH = 4,  # Psyonic as learned tech, or via Psyonic shard bag item
+	PSYONIC_SHARD = 5, # Psyonic equipped on ring
+}
+
 enum Element {
 	TYPELESS,
 	## ATTACK ##

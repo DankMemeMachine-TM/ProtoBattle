@@ -1,6 +1,4 @@
+.assets/
 # Godot 4+ specific ignores
 .godot/
 /android/
-.assets/
-.assets/*
-.assets/**

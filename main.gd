@@ -14,8 +14,6 @@ var enemy_test_ids: Array[int] = [1]; #IDs of enemy dictionary units
 func _ready():
 	player_units = get_player_unit_data();
 	#enemy_units = get_enemy_unit_data();
-	print(player_units[0].base_name);
-	print("TODO: finish main function details");
 
 func get_player_unit_data() -> Array[unitPlayer]:
 	var array: Array[unitPlayer];

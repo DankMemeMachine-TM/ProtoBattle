@@ -4,3 +4,5 @@
 # BGM and SFX are ignored due to possible copyright reasons; this may be temporary
 assets/bgm/**
 assets/sfx/**
+# Ignore initialzing debug.ini, just to test a non-debug build quicker (maybe temporary?)
+debug/debug.ini

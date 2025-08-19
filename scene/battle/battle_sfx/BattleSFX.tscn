@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnwdjtyl6d4rs"]
+
+[ext_resource type="Script" uid="uid://b81ib57w7s8c1" path="res://scene/battle/battle_sfx/battle_sfx.gd" id="1_c6d6r"]
+[ext_resource type="AudioStream" uid="uid://f5de1j7i20mo" path="res://assets/sfx/damage.mp3" id="2_lw464"]
+[ext_resource type="AudioStream" uid="uid://bauudo4s3h2e1" path="res://assets/sfx/critical.mp3" id="3_f6i8e"]
+[ext_resource type="AudioStream" uid="uid://b70p5xcsucj02" path="res://assets/sfx/player_ko.mp3" id="4_fe1kf"]
+
+[node name="BattleSFX" type="Node"]
+script = ExtResource("1_c6d6r")
+
+[node name="Damage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_lw464")
+bus = &"SFX"
+
+[node name="Critical" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_f6i8e")
+bus = &"SFX"
+
+[node name="PlayerKO" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_fe1kf")
+bus = &"SFX"

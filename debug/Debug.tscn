@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvk6mj1778v0p"]
+
+[sub_resource type="GDScript" id="GDScript_d88t4"]
+resource_name = "Debug"
+script/source = "extends Node
+signal debug_key(key)
+
+####################
+## INITIALIZATION ##
+####################
+func _ready():
+	if(!check_for_debug_file()):
+		self.set_process(false);
+		return;
+	print(\"Debug Mode enabled\");
+	
+func check_for_debug_file() -> bool:
+	return FileAccess.file_exists(\"res://debug/debug.ini\");
+
+####################
+## INPUT HANDLING ##
+####################
+func _process(_delta: float) -> void:
+	if Input.is_physical_key_pressed(KEY_1):
+		debug_key.emit(KEY_1);
+	if Input.is_physical_key_pressed(KEY_2):
+		debug_key.emit(KEY_2);
+	if Input.is_physical_key_pressed(KEY_3):
+		debug_key.emit(KEY_3);
+"
+
+[node name="Debug" type="Node"]
+script = SubResource("GDScript_d88t4")

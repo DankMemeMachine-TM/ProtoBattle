@@ -15,12 +15,25 @@ var _active_battlers: Array[unitCharacter] = []; # Battlers who are currently no
 ## Players and Enemies are separate so they can be placed in the right spot in the Battlefield array
 var _player_battlers: Array[unitCharacter] = []; # Player battlers, both alive and KO'd
 var _enemy_battlers: Array[unitCharacter] = []; # Enemy battlers, both alive and KO'd
+@onready var debug_node = get_node("/root/Debug");
+
+####################
+## INPUT HANDLING ##
+####################
+
 
 ############################
 ## BATTLE START FUNCTIONS ##
 ############################
 func _ready():
+	debug_setup();
 	start_battle();
+	
+func debug_setup() -> void:
+	if(debug_node == null):
+		print("Debug Mode not active");
+		return;
+	debug_node.debug_key.connect(_on_debug_debug_key);
 
 func start_battle() -> void:
 	initialize_active_battlers();
@@ -68,3 +81,14 @@ func create_turn_queue() -> void: #TODO
 
 func add_enemy_reinforcement(input: int) -> void:
 	self._enemy_battlers.append(_enemy_battlers[input]);
+
+#####################
+## DEBUG FUNCTIONS ##
+#####################
+func _on_debug_debug_key(key):
+	if(key == KEY_1):
+		$BattleSFX.play_sound($BattleSFX/Damage);
+	if(key == KEY_2):
+		$BattleSFX.play_sound($BattleSFX/Critical);
+	if(key == KEY_3):
+		$BattleSFX.play_sound($BattleSFX/PlayerKO);

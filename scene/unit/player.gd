@@ -14,7 +14,7 @@ var _player_current_equipment: Array[RefCounted] = [null, null, null, null];
 ####################
 ## INITIALIZATION ##
 ####################
-func init(name: String = "", desc: String = "", sex := gCharacter.Sex.NONE, innate := gCharacter.Innate.FIRE,
+func init(c_name: String = "", desc: String = "", sex := gCharacter.Sex.NONE, innate := gCharacter.Innate.FIRE,
 	max_hp: int = 1, max_sp: int = 0, raw_stats: PackedByteArray = [0,0,0,0,0],
 	attack: PackedInt32Array = [0,0,0,0,0,0], hit: PackedByteArray = [0,0,0,0,0,0], crit: PackedByteArray = [0,0,0,0,0,0],
 	evasion: int = 0, e_prop: PackedByteArray = gCharacter.DEFAULT_ELEMENT_PROPERTY.duplicate(),
@@ -22,7 +22,7 @@ func init(name: String = "", desc: String = "", sex := gCharacter.Sex.NONE, inna
 	e_resist_mod: PackedInt32Array = gCharacter.DEFAULT_RESIST_MOD.duplicate(),
 	element_armor: PackedInt32Array = gCharacter.DEFAULT_ELEMENT_ARMOR.duplicate(),
 	attack_armor: PackedInt32Array = gCharacter.DEFAULT_ATTACK_ARMOR.duplicate()) -> unitCharacter:
-	self.base_name = name;
+	self.base_name = c_name;
 	self.base_desc = desc;
 	self.base_sex = sex;
 	self.base_innate = innate;

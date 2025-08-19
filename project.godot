@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="ProtoBattle"
+run/main_scene="uid://jhnhjbyi7v6r"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

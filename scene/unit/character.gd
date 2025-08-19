@@ -30,10 +30,10 @@ var total_hit_rate: PackedByteArray = [0,0,0,0,0,0];
 var total_crit_rate: PackedByteArray = [0,0,0,0,0,0];
 var total_evasion: int = 0;
 var total_element_property: PackedByteArray = gInnate.INNATE_NONE;
-var total_weak_mod: PackedInt32Array = gCharacter.DEFAULT_WEAK_MOD;
-var total_resist_mod: PackedInt32Array = gCharacter.DEFAULT_RESIST_MOD;
-var total_element_armor: PackedInt32Array = gCharacter.DEFAULT_ELEMENT_ARMOR;
-var total_attack_armor: PackedInt32Array = gCharacter.DEFAULT_ATTACK_ARMOR;
+var total_weak_mod: PackedInt32Array = gCharacter.DEFAULT_WEAK_MOD.duplicate();
+var total_resist_mod: PackedInt32Array = gCharacter.DEFAULT_RESIST_MOD.duplicate();
+var total_element_armor: PackedInt32Array = gCharacter.DEFAULT_ELEMENT_ARMOR.duplicate();
+var total_attack_armor: PackedInt32Array = gCharacter.DEFAULT_ATTACK_ARMOR.duplicate();
 
 var current_level: int = 0;
 var current_hp: int = 0;
@@ -45,16 +45,37 @@ var _current_effects: Array[RefCounted] = []; #TODO
 var _stat_changes := Vector3i(0,0,0);
 
 func _ready() -> void:
-	recalculate_stats();
-	print(self.get_stat_change(0));
-	print(self.get_stat_change(1));
-	print(self.get_stat_change(2));
-	print(self.get_stat_change(3));
+	pass;
+	#recalculate_stats();
 
-func init() -> void:
+func init(name: String = "", desc: String = "", sex := gCharacter.Sex.NONE, innate := gCharacter.Innate.FIRE,
+	max_hp: int = 1, max_sp: int = 0, raw_stats: PackedByteArray = [0,0,0,0,0],
+	attack: PackedInt32Array = [0,0,0,0,0,0], hit: PackedByteArray = [0,0,0,0,0,0], crit: PackedByteArray = [0,0,0,0,0,0],
+	evasion: int = 0, e_prop: PackedByteArray = gCharacter.DEFAULT_ELEMENT_PROPERTY.duplicate(),
+	e_weak_mod: PackedInt32Array = gCharacter.DEFAULT_WEAK_MOD.duplicate(),
+	e_resist_mod: PackedInt32Array = gCharacter.DEFAULT_RESIST_MOD.duplicate(),
+	element_armor: PackedInt32Array = gCharacter.DEFAULT_ELEMENT_ARMOR.duplicate(),
+	attack_armor: PackedInt32Array = gCharacter.DEFAULT_ATTACK_ARMOR.duplicate()) -> unitCharacter:
+	self.base_name = name;
+	self.base_desc = desc;
+	self.base_sex = sex;
+	self.base_innate = innate;
+	self.base_max_hp = max_hp;
+	self.base_max_sp = max_sp;
+	self.base_raw_stats = raw_stats;
+	self.base_attack = attack;
+	self.base_hit_rate = hit;
+	self.base_crit_rate = crit;
+	self.base_evasion = evasion;
+	self.base_element_property = e_prop;
+	self.base_weak_mod = e_weak_mod;
+	self.base_resist_mod = e_resist_mod;
+	self.base_element_armor = element_armor;
+	self.base_attack_armor = attack_armor;
 	recalculate_stats();
 	self.current_hp = self.total_max_hp;
 	self.current_sp = self.total_max_sp;
+	return self;
 	
 #####################
 ## HP/SP FUNCTIONS ##

@@ -12,6 +12,38 @@ extends unitCharacter
 var _player_current_equipment: Array[RefCounted] = [null, null, null, null];
 
 ####################
+## INITIALIZATION ##
+####################
+func init(name: String = "", desc: String = "", sex := gCharacter.Sex.NONE, innate := gCharacter.Innate.FIRE,
+	max_hp: int = 1, max_sp: int = 0, raw_stats: PackedByteArray = [0,0,0,0,0],
+	attack: PackedInt32Array = [0,0,0,0,0,0], hit: PackedByteArray = [0,0,0,0,0,0], crit: PackedByteArray = [0,0,0,0,0,0],
+	evasion: int = 0, e_prop: PackedByteArray = gCharacter.DEFAULT_ELEMENT_PROPERTY.duplicate(),
+	e_weak_mod: PackedInt32Array = gCharacter.DEFAULT_WEAK_MOD.duplicate(),
+	e_resist_mod: PackedInt32Array = gCharacter.DEFAULT_RESIST_MOD.duplicate(),
+	element_armor: PackedInt32Array = gCharacter.DEFAULT_ELEMENT_ARMOR.duplicate(),
+	attack_armor: PackedInt32Array = gCharacter.DEFAULT_ATTACK_ARMOR.duplicate()) -> unitCharacter:
+	self.base_name = name;
+	self.base_desc = desc;
+	self.base_sex = sex;
+	self.base_innate = innate;
+	self.base_max_hp = max_hp;
+	self.base_max_sp = max_sp;
+	self.base_raw_stats = raw_stats;
+	self.base_attack = attack;
+	self.base_hit_rate = hit;
+	self.base_crit_rate = crit;
+	self.base_evasion = evasion;
+	self.base_element_property = e_prop;
+	self.base_weak_mod = e_weak_mod;
+	self.base_resist_mod = e_resist_mod;
+	self.base_element_armor = element_armor;
+	self.base_attack_armor = attack_armor;
+	recalculate_stats();
+	self.current_hp = self.total_max_hp;
+	self.current_sp = self.total_max_sp;
+	return self;
+
+####################
 ## STAT FUNCTIONS ##
 ####################
 func calculate_max_hp() -> int:

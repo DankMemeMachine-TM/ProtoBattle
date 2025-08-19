@@ -20,7 +20,8 @@ var _enemy_battlers: Array[unitCharacter] = []; # Enemy battlers, both alive and
 ####################
 ## INPUT HANDLING ##
 ####################
-
+func _process(_delta: float) -> void:
+	pass;
 
 ############################
 ## BATTLE START FUNCTIONS ##

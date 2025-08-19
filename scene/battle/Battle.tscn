@@ -7,3 +7,5 @@
 script = ExtResource("1_1apf1")
 
 [node name="BattleGUI" parent="." instance=ExtResource("2_jbk8y")]
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]

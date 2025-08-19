@@ -1,4 +1,6 @@
-.assets/
 # Godot 4+ specific ignores
 .godot/
 /android/
+# BGM and SFX are ignored due to possible copyright reasons; this may be temporary
+assets/bgm/**
+assets/sfx/**

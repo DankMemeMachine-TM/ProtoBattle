@@ -10,7 +10,7 @@ extends Node
 var battle_scene = preload("res://scene/battle/Battle.tscn");
 var player_units: Array[unitPlayer] = [];
 var enemy_units: Array[unitEnemy] = [];
-var player_test_ids: Array[int] = [1]; # IDs of player dictionary units
+var player_test_ids: Array[int] = [1, 2]; # IDs of player dictionary units
 var enemy_test_ids: Array[int] = [1]; #IDs of enemy dictionary units
 
 func _ready():

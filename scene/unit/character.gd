@@ -1,6 +1,8 @@
+@abstract
 class_name unitCharacter
 extends Node2D
 
+# These two should probably go somewhere else in a better designed project
 const MAX_STAT_CHANGE = 4;
 const MIN_STAT_CHANGE = -4;
 
@@ -159,6 +161,9 @@ func calculate_psyonic_attack_powers(level_mod: float = 0.0) -> void:
 ######################
 ## BATTLE FUNCTIONS ##
 ######################
+func get_effective_speed() -> int:
+	return self.total_raw_stats[gCharacter.Raw.SPD];
+
 # AILMENTS #
 func check_for_ailment(input: unitAilment) -> bool:
 	if(self._current_ailments.has(input)):

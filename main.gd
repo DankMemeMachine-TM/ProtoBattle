@@ -13,7 +13,8 @@ var enemy_test_ids: Array[int] = [1]; #IDs of enemy dictionary units
 
 func _ready():
 	player_units = get_player_unit_data();
-	#enemy_units = get_enemy_unit_data();
+	enemy_units = get_enemy_unit_data();
+	add_child(battle_scene.instantiate());
 
 func get_player_unit_data() -> Array[unitPlayer]:
 	var array: Array[unitPlayer];
@@ -26,7 +27,7 @@ func get_player_unit_data() -> Array[unitPlayer]:
 func get_enemy_unit_data() -> Array[unitEnemy]:
 	var array: Array[unitEnemy];
 	for n in enemy_test_ids.size():
-		var temp = load_unit_from_dic(n, dbEnemy.data);
+		var temp = load_unit_from_dic(enemy_test_ids[n], dbEnemy.data);
 		if(temp != null):
 			array.append(temp);
 	return array;

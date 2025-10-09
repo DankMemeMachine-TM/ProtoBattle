@@ -1,0 +1,1 @@
+if i find any bugs when the prototype is actually finished i'll put them here to unfuck it up

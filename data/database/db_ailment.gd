@@ -2,5 +2,5 @@ class_name dbAilment
 extends RefCounted
 
 static var data: Dictionary = {
-	0: unitAilment, #TODO
+	gAilment.Name.aDEATH: unitAilment.new().init(), #TODO
 }

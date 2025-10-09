@@ -20,6 +20,9 @@ var ailm_on_expire: int = 0;
 # CURRENT VARIABLES (rename?)
 var _turns_left: int = 0;
 
+func init():
+	return;
+
 func get_turn_counter() -> int:
 	return max(0, self._turns_left); # Ensure that _turns_left can't go below 0
 	

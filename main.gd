@@ -1,7 +1,9 @@
 '''
 Main.tscn
 
-For this project's case, all this file does is set up the test battle environment.
+For this project's case, all this file does is set up the test battle environment. In a future
+project, I would probably just have the Main scene handle game initialization and scene changes,
+while relegating setups to their respective scenes.
 '''
 extends Node
 
@@ -15,6 +17,7 @@ func _ready():
 	player_units = get_player_unit_data();
 	enemy_units = get_enemy_unit_data();
 	add_child(battle_scene.instantiate());
+	$Battle.init(player_units, enemy_units);
 
 func get_player_unit_data() -> Array[unitPlayer]:
 	var array: Array[unitPlayer];

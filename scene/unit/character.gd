@@ -161,7 +161,7 @@ func calculate_psyonic_attack_powers(level_mod: float = 0.0) -> void:
 ######################
 ## BATTLE FUNCTIONS ##
 ######################
-func get_effective_speed() -> int:
+func get_effective_speed() -> int: #TODO: add the rest of the logic
 	return self.total_raw_stats[gCharacter.Raw.SPD];
 
 # AILMENTS #

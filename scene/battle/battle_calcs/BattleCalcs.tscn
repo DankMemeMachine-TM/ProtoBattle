@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cycw807gfj4as"]
+
+[ext_resource type="Script" uid="uid://cfp8bk1av4ei2" path="res://scene/battle/battle_calcs/battle_calcs.gd" id="1_qoeas"]
+
+[node name="BattleCalcs" type="Node"]
+script = ExtResource("1_qoeas")

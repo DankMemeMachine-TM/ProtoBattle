@@ -4,4 +4,5 @@ extends RefCounted
 enum Name {
 	eNONE,
 	eTEKI,
+	eAITE,
 }

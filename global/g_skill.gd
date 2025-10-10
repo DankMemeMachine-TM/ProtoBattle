@@ -25,6 +25,16 @@ enum AttackStat {
 	PSYONIC_SHARD = 5, # Psyonic equipped on ring
 }
 
+enum SkillRange {
+	MELEE,
+	RANGED,
+}
+
+enum Armed {
+	UNARMED,
+	ARMED,
+}
+
 enum Element {
 	TYPELESS,
 	## ATTACK ##

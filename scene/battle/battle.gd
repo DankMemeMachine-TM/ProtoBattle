@@ -66,7 +66,7 @@ func check_alive_battlers(input: Array) -> Array:
 	return _array;
 	
 func create_turn_queue() -> void:
-	_turn_queue = _active_battlers.duplicate();
+	_turn_queue = _active_battlers.duplicate(); # Duplicate so as not to pass-by-reference
 	_turn_queue.sort_custom(effective_speed_sort);
 	
 func effective_speed_sort(a, b) -> bool:
@@ -74,12 +74,9 @@ func effective_speed_sort(a, b) -> bool:
 	if(_result == true):
 		return true;
 	# The clusterfuck below basically makes it so players have priority over enemies, but will be sorted by
-	# their order in _active_battlers if a player speed ties a player; a similar thing happens for
-	# enemies with a speed tie
+	# their order in _active_battlers if a player speed ties a player
 	if(_result == false and a.get_effective_speed() == b.get_effective_speed()):
 		if((a is unitPlayer or b is unitPlayer) and (a is not unitPlayer or b is not unitPlayer)): # Player units get priority over enemies
-			return true;
-		if(a is unitEnemy and b is unitEnemy): # This should group enemies in _active_battlers order
 			return true;
 	return false;
 

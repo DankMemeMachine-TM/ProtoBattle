@@ -37,6 +37,13 @@ var total_resist_mod: PackedInt32Array = gCharacter.DEFAULT_RESIST_MOD.duplicate
 var total_element_armor: PackedInt32Array = gCharacter.DEFAULT_ELEMENT_ARMOR.duplicate();
 var total_attack_armor: PackedInt32Array = gCharacter.DEFAULT_ATTACK_ARMOR.duplicate();
 
+var attack_command_skill = gSklName.Name.sklACT_ATTACK_UNARMED;
+var shoot_command_skill = gSklName.Name.sklACT_SHOOT_UNARMED;
+var defend_command_skill = gSklName.Name.sklACT_DEFEND;
+var equipped_techs: Array;
+var equipped_active_abilities: Array;
+var equipped_passive_abilities: Array;
+
 var current_level: int = 0;
 var current_hp: int = 0;
 var current_sp: int = 0;
@@ -157,6 +164,11 @@ func calculate_psyonic_attack_powers(level_mod: float = 0.0) -> void:
 	var _psy_mod: float = (self.total_raw_stats[gCharacter.Raw.PSY] * 2);
 	self.current_attack_power[gSkill.AttackStat.PSYONIC_TECH] = floor(_psy_mod + level_mod + self.total_attack[gSkill.AttackStat.PSYONIC_TECH]);
 	self.current_attack_power[gSkill.AttackStat.PSYONIC_SHARD] = floor(_psy_mod + level_mod + self.total_attack[gSkill.AttackStat.PSYONIC_SHARD]);
+	
+func determine_action_skills() -> void:
+	self.attack_command_skill = gSklName.Name.sklACT_ATTACK_UNARMED;
+	self.shoot_command_skill = gSklName.Name.sklACT_SHOOT_UNARMED;
+	self.defend_command_skill = gSklName.Name.sklACT_DEFEND;
 	
 ######################
 ## BATTLE FUNCTIONS ##

@@ -10,13 +10,13 @@ const ALWAYS_CRIT = 255;
 #################
 ## ENUMERATORS ##
 #################
-enum AttackType {
+enum AttackType { # Used with Armed to determine weapon needed
 	MELEE,
 	GUN,
 	PSYONIC,
 }
 
-enum AttackStat {
+enum AttackStat { # Determines which attack stat to use
 	MELEE_WEAPON = 0,  # Weapon-based melee attack
 	MELEE_UNARMED = 1, # Melee attack without a weapon
 	GUN_WEAPON = 2,	   # Weapon-based gun attack
@@ -30,7 +30,23 @@ enum SkillRange {
 	RANGED,
 }
 
-enum Armed {
+enum SkillTarget {
+	ONE_FOE,
+	ONE_ROW,
+	ONE_LINE,
+	ALL_FOES,
+	ONE_ALLY,
+	ONE_ALLY_ROW,
+	ONE_ALLY_LINE,
+	ALL_ALLIES,
+	ONE_ALLY_KOD,
+	ALL_ALLIES_KOD,
+	SELF,
+	EVERYONE_BUT_SELF,
+	EVERYONE,
+}
+
+enum Armed { # Determines if a weapon is needed to use a skill
 	UNARMED,
 	ARMED,
 }
@@ -57,9 +73,6 @@ enum Element {
 	AFRAID,
 	## MISC ##
 	RECOVERY,
-	# SUPPORT
-	# AILMENT
-	# MISC
 }
 
 enum Effective {

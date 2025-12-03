@@ -51,6 +51,11 @@ enum Armed { # Determines if a weapon is needed to use a skill
 	ARMED,
 }
 
+enum DeathType { # If the right conditions are met, play a special animation upon death
+	NONE,
+	DECAPITATION,
+}
+
 enum Element {
 	TYPELESS,
 	## ATTACK ##
